@@ -10,11 +10,12 @@ This animation demonstrates how recent rows from multiple local Postgres databas
 - Centralized error handling for maintainability
 - Fully automated with Airflow DAGs
 In here, 1 new row synced to artist table in Neon.
-We can check the Logs inside airflow like a terminal in VS Code. 
+We can check the Logs inside airflow like a terminal in VS Code 
 
 ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Airflow_Logs_png?raw=true)
 
 ### 💾 Neon Tech
+
 - Stores data synced from our local Postgres setup, acting as a lightweight cloud app backend.
   
 ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Neon_app_img?raw=true)
@@ -117,14 +118,17 @@ if __name__ == "__main__":
 ```
 ### 🧱 Neon to Databricks
 - After staging the data to Neon, we can move the tables to databricks and perform future transformations
+  
   ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/neon_to_databricks?raw=true)
 
 ### 🧱 📊 Databricks connection to power BI desktop
 - Navigate to SQL warehouses > Connection details (use this in power BI desktop)
+  
   ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/databricks_to_pbi?raw=true)
 
-### 📊 Successful connection in Power BI Deskto
+### 📊 Successful connection in Power BI Desktop
 - Navigate to SQL warehouses > Connection details (use this in power BI desktop)
+  
   ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/pbi_connection?raw=true)
   
   
