@@ -9,3 +9,7 @@ This animation demonstrates how recent rows from multiple local Postgres databas
 - Incremental loads across multiple tables
 - Centralized error handling for maintainability
 - Fully automated with Airflow DAGs
+In here, 1 new row synced to artist table in Neon.
+We can check the Logs inside airflow like a terminal in VS Code. 
+
+![[Pasted image 20250720201402.png]]
