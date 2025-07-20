@@ -20,7 +20,7 @@ We can check the Logs inside airflow like a terminal in VS Code.
 ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Neon_app_img?raw=true)
 
 ### :program: Python Code
-<pre><code>```python import psycopg2 import os from datetime import datetime
+```python import psycopg2 import os from datetime import datetime
 
 TABLES = ["track", "album", "artist"] TIME_INTERVAL = "30 minutes"
 
