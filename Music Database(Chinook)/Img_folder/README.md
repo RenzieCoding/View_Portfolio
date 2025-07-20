@@ -16,4 +16,5 @@ We can check the Logs inside airflow like a terminal in VS Code.
 
 ### 💾 Neon Tech
 - Stores data synced from our local Postgres setup, acting as a lightweight cloud app backend.
+  
 ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Neon_app_img?raw=true)
