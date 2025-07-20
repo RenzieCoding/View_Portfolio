@@ -19,9 +19,9 @@ We can check the Logs inside airflow like a terminal in VS Code.
   
 ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Neon_app_img?raw=true)
 
-### :program: Python Code
+### 🐍 Python Code
 ```python 
-#import psycopg2
+import psycopg2
 from datetime import datetime
 
 # --- CONFIG ---
