@@ -114,3 +114,17 @@ if __name__ == "__main__":
     local_conn.close()
     neon_cursor.close()
     neon_conn.close()
+```
+### 🧱 Neon to Databricks
+- After staging the data to Neon, we can move the tables to databricks and perform future transformations
+  ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/neon_to_databricks?raw=true)
+
+### 🧱 📊 Databricks connection to power BI desktop
+- Navigate to SQL warehouses > Connection details (use this in power BI desktop)
+  ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/databricks_to_pbi?raw=true)
+
+### 📊 Successful connection in Power BI Deskto
+- Navigate to SQL warehouses > Connection details (use this in power BI desktop)
+  ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/pbi_connection?raw=true)
+  
+  
