@@ -13,3 +13,6 @@ In here, 1 new row synced to artist table in Neon.
 We can check the Logs inside airflow like a terminal in VS Code. 
 
 ![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Airflow_Logs_png?raw=true)
+
+### 💾 Neon Tech
+- Stores data synced from our local Postgres setup, acting as a lightweight cloud app backend.
