@@ -12,4 +12,4 @@ This animation demonstrates how recent rows from multiple local Postgres databas
 In here, 1 new row synced to artist table in Neon.
 We can check the Logs inside airflow like a terminal in VS Code. 
 
-![[Pasted image 20250720201402.png]]
+![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Airflow_Logs_png?raw=true)
