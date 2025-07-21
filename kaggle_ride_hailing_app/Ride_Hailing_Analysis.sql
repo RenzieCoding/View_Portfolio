@@ -6,7 +6,8 @@
 -- driver information, and ride statistics.
 ------------------------------------------------------------------------------------------------
 
---SECTION: DATABASE SET-UP
+'''sql 
+#--SECTION: DATABASE SET-UP
 
 CREATE DATABASE ride_hailing_analysis;
 
@@ -24,6 +25,7 @@ CREATE TABLE drivers (
 	license_plate  text,																--licese plate(text followed by a dash and 4 numbers)				
 	created_at date																		--date of data entry
 );
+'''
 --users Table
 CREATE TABLE users ( 
 	user_id bigint PRIMARY KEY,
