@@ -18,7 +18,7 @@ We can check the Logs inside airflow like a terminal in VS Code
 
 - Stores data synced from our local Postgres setup, acting as a lightweight cloud app backend.
   
-![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/Neon_app_img.png?raw=true)
+![Alt text](https://github.com/RenzieCoding/sql_portfolio_projects/blob/main/Music%20Database(Chinook)/Img_folder/neon_app.png?raw=true)
 
 ### 🐍 Python Code
 ```python 
