@@ -6,7 +6,7 @@
 -- driver information, and ride statistics.
 ------------------------------------------------------------------------------------------------
 ```sql 
-#--SECTION: DATABASE SET-UP
+--SECTION: DATABASE SET-UP
 
 CREATE DATABASE ride_hailing_analysis;
 
