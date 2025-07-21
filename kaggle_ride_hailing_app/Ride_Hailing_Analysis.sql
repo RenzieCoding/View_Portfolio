@@ -5,7 +5,7 @@
 -- This project focuses on the analysis of ride-hailing transaction data, including user details,
 -- driver information, and ride statistics.
 ------------------------------------------------------------------------------------------------
-```sql 
+
 --SECTION: DATABASE SET-UP
 
 CREATE DATABASE ride_hailing_analysis;
