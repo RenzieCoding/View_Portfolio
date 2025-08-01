@@ -20,3 +20,4 @@ My goal waws to surface only the relevant fields:
   
 It's become my go-to strategy for testing scenarios.
 
+Good Catch: We could remove second condition. 😜
