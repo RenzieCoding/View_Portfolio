@@ -9,7 +9,7 @@ In this exercise, I used DEFINE to create temporary measures and EVALUATE to sim
 
 For me, this saves a lot of headache than doing wild DAX and then getting lost in the process. 
 
-My goal waws to surface only the relevant fields:
+My goal was to surface only the relevant fields:
 - `Company Name` (non-blank)
     
 - `Product Brand`
