@@ -1,33 +1,169 @@
-# ✅ Module 1 - Create a dimension table in power query
-Created a dim_date table in my dataflow before using notebook. 
 
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_gif_Microsoft%20Fabric%20End%20Pipeline.gif?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/ms_f_notebook.gif?raw=true)
 
-Learning Reference: [Module 2 - Transform data with a dataflow in Data Factory - Microsoft Fabric | Microsoft Learn](https://learn.microsoft.com/en-us/fabric/data-factory/tutorial-end-to-end-dataflow)
+## ✅ Module 1 - Create a dimension table in power query
 
+<details>
+<summary>Click to expand notes</summary>
+  
+### ✨Created a dim_date table in my dataflow before using notebook. 
+
+
+This will be used in joining the fact_table for testing purposes in the notebook.
 Overview
 
-I recently explored Microsoft Fabric's data capabilities through a three-module learning path. This hands-on experience helped me get familiar with the interface and key components like pipelines, dataflows, and Lakehouse.
+``` sql
 
-Coming from a Power BI development background, I was able to apply my knowledge of Power Query, especially in areas like:
+  let
 
--  Dynamic column transformation
--  Appending columns without breaking the schema
--  Avoiding duplicate columns that can disrupt the query logic
+  Source = fact_table,
 
-One thing I always strive for is making scenarios as close to real business use cases as possible, and this learning path supported that mindset. If you're aiming to bridge the gap between data engineering and BI, this module is worth exploring.
+  MinDate = List.Min(Source[lpepPickup]),
 
-## 📁 Module 1 – Creating Data Pipeline
+  MaxDate = List.Max(Source[lpepPickup]),
+
+  DateList = List.Dates(MinDate, Duration.Days(MaxDate - MinDate) + 1, #duration(1,0,0,0)),
+
+  DateTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"} ),
+
+  #"Changed column type" = Table.TransformColumnTypes(DateTable, {{"Date", type date}}),
+
+  #"Inserted year" = Table.AddColumn(#"Changed column type", "Year", each Date.Year([Date]), type nullable number),
+
+  #"Inserted month" = Table.AddColumn(#"Inserted year", "Month", each Date.Month([Date]), type nullable number),
+
+  #"Inserted quarter" = Table.AddColumn(#"Inserted month", "Quarter", each Date.QuarterOfYear([Date]), type nullable number),
+
+  #"Added custom" = Table.AddColumn(#"Inserted quarter", "MonthYearOrder", each [Year]* 100 + [Month]),
+
+  #"Inserted day" = Table.AddColumn(#"Added custom", "Day", each Date.Day([Date]), type nullable number),
+
+  #"Inserted day of week" = Table.AddColumn(#"Inserted day", "Day of week", each Date.DayOfWeek([Date]), type nullable number)
+
+in
+
+  #"Inserted day of week"
+```
+
+
+## 📁 Module 2 Using Notebook
 
 <details>
 <summary>Click to expand notes</summary>
 
-### ✨ Source tab and Destination tab
+### ✨ Checking dim_date table
 
-- Built a Data Pipeline using the NYC Taxi dataset 
-- Ingested and organized data in preparation for transformation
 
-In the source tab, we can select the source. I've chosen the NYC taxi trip.
+```python
+
+nyc_dim_date_df = spark.sql("""SELECT * FROM mylakehouse.dim_date""")
+
+display(nyc_dim_date_df)
+```
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
+
+## Using python to future proof if ever there are table name changes
+
+
+``` python
+nyc_taxi_table = "mylakehouse.nyc_taxi_merged_with_discounts_source"
+
+date_table ="mylakehouse.dim_date"
+
+  
+
+query = f"""
+
+SELECT * FROM {nyc_taxi_table} AS nyc_taxi_fact
+
+LEFT JOIN {date_table} dim_date ON dim_date.Date = nyc_taxi_fact.lpepPickup
+
+LIMIT 1000"""
+
+  
+
+nyc_merged_df = spark.sql(query)
+
+display(nyc_merged_df)
+```
 
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
 
+## Transforming the time columns into int
+
+ ```python
+ #transforming
+
+#Define keywords to match
+
+keywords = ["Year","Year2","Month","Quarter","Day","Week"]
+
+  
+
+#Find matching columns
+
+target_cols =[c for c in nyc_merged_df.columns if any (k in c for k in keywords)]
+
+  
+
+#ReStart with original Dataframe
+
+nyc_merged_df_cleaned = nyc_merged_df
+
+  
+
+#Cast all matching columns to int
+
+for c in target_cols:
+
+    nyc_merged_df_cleaned = nyc_merged_df_cleaned.withColumn(c, col(c).cast("int"))
+
+  
+
+display(nyc_merged_df_cleaned)
+```
+
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
+
+## # Cleaning Column Name because Delta Lake (used by Microsoft Fabric) does not allow by default
+
+``` python
+
+def sanitized_column_names(nyc_merged_df_cleaned):
+
+    for col_name in nyc_merged_df_cleaned.columns:
+
+        clean_name = col_name.replace(" ","_").replace("(","").replace(")")
+```
+
+## Function to save the DataFrame to mylakehouse
+
+```python
+def sanitize_column_names(df):
+
+    for col_name in df.columns:
+
+        clean_name = col_name.replace(" ", "_").replace("(", "").replace(")", "")
+
+        df = df.withColumnRenamed(col_name, clean_name)
+
+    return df
+
+  
+
+nyc_cleaned_sanitized = sanitize_column_names(nyc_merged_df_cleaned)
+
+  
+
+nyc_cleaned_sanitized.write.format("delta").mode("overwrite").saveAsTable("nyc_taxi_transformed")
+```
+
+## Checking if the joined and cleaned table is ready
+
+```
+df = spark.sql("SELECT * FROM mylakehouse.nyc_taxi_transformed LIMIT 1000")
+
+display(df)
+```
+
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
