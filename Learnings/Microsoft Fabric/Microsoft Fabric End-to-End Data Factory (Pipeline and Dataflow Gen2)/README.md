@@ -1,5 +1,7 @@
 # Microsoft Fabric End-to-End Data Factory (Pipeline and Dataflow)
 
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_gif_Microsoft%20Fabric%20End%20Pipeline.gif?raw=true)
+
 Learning Reference: [Module 2 - Transform data with a dataflow in Data Factory - Microsoft Fabric | Microsoft Learn](https://learn.microsoft.com/en-us/fabric/data-factory/tutorial-end-to-end-dataflow)
 
 Overview
