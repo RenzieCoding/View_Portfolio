@@ -1,5 +1,5 @@
 
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/ms_f_notebook.gif?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20Notebooks/asset_checking_dim_date.png?raw=true)
 
 ## ✅ Module 1 - Create a dimension table in power query
 
@@ -60,7 +60,7 @@ nyc_dim_date_df = spark.sql("""SELECT * FROM mylakehouse.dim_date""")
 
 display(nyc_dim_date_df)
 ```
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_checking_dim_date.png?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20Notebooks/asset_checking_dim_date.png?raw=true)
 
 ## Using python to future proof if ever there are table name changes
 
@@ -87,7 +87,7 @@ nyc_merged_df = spark.sql(query)
 display(nyc_merged_df)
 ```
 
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20Notebooks/using_python_to_future_proof.png?raw=true)
 
 ## Transforming the time columns into int
 
@@ -123,7 +123,7 @@ for c in target_cols:
 display(nyc_merged_df_cleaned)
 ```
 
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20Notebooks/transformed_columns_into_int.png?raw=true)
 
 ## # Cleaning Column Name because Delta Lake (used by Microsoft Fabric) does not allow by default
 
@@ -166,4 +166,4 @@ df = spark.sql("SELECT * FROM mylakehouse.nyc_taxi_transformed LIMIT 1000")
 display(df)
 ```
 
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20Notebooks/checking_joined_and_cleaned_table_ready.png?raw=true)
