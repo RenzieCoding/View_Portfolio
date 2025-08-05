@@ -140,12 +140,16 @@ In here, I was able to use a SQL connection string through the AZURE SQL connect
 	
 ### ✨  Adding another source from NEON Console
 -  I want to simulate connecting to another source. So I added a new source from the neon console in the same pipeline.
+-  
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_usethetableinpowwerbi.png?raw=true)
 
 Preview of Neon data
+
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_source_neon.png?raw=true)
 
 Sorry, I intentionally skipped the third module - Automation because I am still having problems with my free account. Anyway, I replaced it with another learning, which is connecting to another database.
 
 
-# 💡I would like to explore further doing data transformation using a Notebook. This will be my next topic.
+</details>
+
+## 💡I would like to explore further doing data transformation using a Notebook. This will be my next topic.
