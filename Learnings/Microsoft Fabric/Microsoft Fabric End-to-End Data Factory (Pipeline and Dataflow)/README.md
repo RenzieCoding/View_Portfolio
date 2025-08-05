@@ -6,13 +6,13 @@ Overview
 
 I recently explored Microsoft Fabric's data capabilities through a three-module learning path. This hands-on experience helped me get familiar with the interface and key components like pipelines, dataflows, and Lakehouse.
 
-Coming from a Power BI development background, I was able to apply my knowledge of Power Query - especially in areas like:
+Coming from a Power BI development background, I was able to apply my knowledge of Power Query, especially in areas like:
 
 -  Dynamic column transformation
 -  Appending columns without breaking the schema
 -  Avoiding duplicate columns that can disrupt the query logic
 
-One thing I always strive for is making scenarios as close to real business use cases as possible, and this learning path supported that mindset. If you're aiming to bridge the gap between data engineering and BI, this module is definitely worth exploring.
+One thing I always strive for is making scenarios as close to real business use cases as possible, and this learning path supported that mindset. If you're aiming to bridge the gap between data engineering and BI, this module is worth exploring.
 
 ## 📁 Module 1 – Creating Data Pipeline
 
@@ -21,14 +21,14 @@ One thing I always strive for is making scenarios as close to real business use 
 
 ### ✨ Source tab and Destination tab
 
-- Built a Data Pipeline using NYC Taxi dataset 
+- Built a Data Pipeline using the NYC Taxi dataset 
 - Ingested and organized data in preparation for transformation
 
 In the source tab, we can select the source. I've chosen the NYC taxi trip.
 
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
 
-In the destination tab, we can establish connection to "mylakehouse" (Lakehouse) and we name this as Bronze.
+In the destination tab, we can establish a connection to "mylakehouse" (Lakehouse), and we name this as Bronze.
 
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_pipeline_destination_mapping.png?raw=true)
 
@@ -48,13 +48,13 @@ In the destination tab, we can establish connection to "mylakehouse" (Lakehouse)
     - Used check logics
     - Filtered "storeAndFwdFlag" = Y for discounts
     - Filtered "lpepPickUp" = (2015,1,1) to (2015,1,31)
-    - Merged the discount table to Bronze table
+    - Merged the discount table with the Bronze table
     - Created a Discount Calculation logic using a conditional column:
 	    - Added "TotalAmountAfterDiscount" column
       - Applied a rounding function with RoundingMode
 - Adding Data from Neon Console
 
-This code acts as CREATE OR REPLACE for the 2 columns  "lpepPickup" and "lpepDropoff"
+This code acts as a CREATE OR REPLACE for the 2 columns  "lpepPickup" and "lpepDropoff"
 ```sql
 	 ListZip = List.Zip({ListofAutomaticallySelectedDateColumns, TransformDateColumntoExtractJustDatewithprefix}),
 
@@ -95,7 +95,7 @@ This code acts as CREATE OR REPLACE for the 2 columns  "lpepPickup" and "lpepDro
   #"Filtered rows" = Table.SelectRows(InsertedDateColumns, each ([storeAndFwdFlag] = "Y")),
 ```
 
-This the code from the Advanced Editor that transformed the Bronze Table.
+This is the code from the Advanced Editor that transformed the Bronze Table.
 
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_AdvancedEditor.png?raw=true)
 
@@ -109,17 +109,43 @@ Merging the Bronze table with Generated-NYC-Taxi-Green-Discount
     -  I selected vendor ID and lpepPickup from the Bronze table and VendorID and Date from the discount table to make the connection.
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_mergedbronzedtableanddiscounttable.png?raw=true)
 
-Creating the Discount in the merged as new query (fact_table)
+Creating the Discount in the merged as a new query (fact_table)
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_fact_table_flow.png?raw=true)
 
-Added some Rounding function in TotaAmountAfterDiscount column
+Added a Rounding function in TotaAmountAfterDiscount column
 
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/aasset_conditionalcolumnfordiscount.png?raw=true)
 
-Connecting the fact_table to its data destination 
-    - My traget data destination here is the Lakehouse and I've set the default to mylakehouse just to differentiate but they are just the same. 
+Connecting the fact_table to its data destination
+    - My target data destination here is the Lakehouse, and I've set the default to mylakehouse just to differentiate, but they are just the same. 
     
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_connectingtothelakehousedestination.png?raw=true)
 
+Renamed the dataflow to nyc_taxi_merged_with_discounts
+
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_renamedfact_tableto_nyc_mergeddiscount.png?raw=true)
+
+Note: Remember to refresh the dataflow and check in your destination Lakehouse the tables that you created.
+
+In here, I was able to use a SQL connection string through the AZURE SQL connector in Power BI desktop
+
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_usethetableinpowwerbi.png?raw=true)
+
+</details>
+
+## 📁 Module 3 – replacement: Adding another source from NEON Console
+
+<details>
+<summary>Click to expand notes</summary>
+	
+### ✨ Transforming the data using Dataflow Gen2
+-  I want to simulate connecting to another source. So I added a new source from the neon console in the same pipeline.
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_usethetableinpowwerbi.png?raw=true)
+
+Preview of Neon data
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_usethetableinpowwerbi.png?raw=true)
+
+Sorry, I intentionally skipped the third module - Automation because I am still having problem with my free account. Anyway, I replaced it with another learning which is connecting another database.
 
 
+# 💡I would like to explore further doing data transformation using Notebook. This will be my next topic.
