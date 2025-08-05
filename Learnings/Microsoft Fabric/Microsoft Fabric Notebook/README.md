@@ -1,5 +1,5 @@
 
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20Notebooks/asset_checking_dim_date.png?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20Notebooks/ms_f_notebook.gif?raw=true)
 
 ## ✅ Module 1 - Create a dimension table in power query
 
