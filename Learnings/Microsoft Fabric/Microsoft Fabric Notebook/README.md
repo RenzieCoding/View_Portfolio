@@ -60,7 +60,7 @@ nyc_dim_date_df = spark.sql("""SELECT * FROM mylakehouse.dim_date""")
 
 display(nyc_dim_date_df)
 ```
-![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_creating_pipeline.png?raw=true)
+![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_checking_dim_date.png?raw=true)
 
 ## Using python to future proof if ever there are table name changes
 
