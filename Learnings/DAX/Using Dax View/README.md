@@ -1,4 +1,4 @@
-![DAX Query View Testing](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Daxviewwintro.png?raw=true)
+![DAX Query View Testing](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/DAX/DAX%20View/DaxViewWithTables.png?raw=true)
 
 **🧪 DAX Query View: My Testing Ground for Scenario Flags**
 
