@@ -44,7 +44,7 @@ in
 
   #"Inserted day of week"
 ```
-
+</details>
 
 ## 📁 Module 2 Using Notebook
 
