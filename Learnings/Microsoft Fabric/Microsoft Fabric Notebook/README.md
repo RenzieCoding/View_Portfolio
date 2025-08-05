@@ -1,4 +1,5 @@
-# Microsoft Fabric End-to-End Data Factory (Pipeline and Dataflow)
+# ✅ Module 1 - Create a dimension table in power query
+Created a dim_date table in my dataflow before using notebook. 
 
 ![Alt text](https://github.com/RenzieCoding/View_Portfolio/blob/main/Images/Microsoft%20Fabric/Microsoft%20Fabric%20End-to-End%20Date%20Factory%20(Pipeline%20and%20Dataflow)/asset_gif_Microsoft%20Fabric%20End%20Pipeline.gif?raw=true)
 
